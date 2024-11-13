@@ -1,0 +1,5 @@
+linters-settings:
+  disable:
+    - exportloopref
+  enable:
+    - copyloopvar
