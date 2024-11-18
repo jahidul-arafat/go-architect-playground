@@ -35,6 +35,23 @@ func main() {
 
 	//greetVariadic := sayHelloVariadic("Hello", "Ally", "Billy", "Cilly")
 	//fmt.Println(greetVariadic)
+
+	// info function with multiple return
+	names := []string{"Ally", "Billy", "Cilly", "Dilly"}
+	//var names []string
+	//names = make([]string, 0, len(names))
+	gs, l, _ := info(names)
+	fmt.Printf("gs=%v, l=%v\n", gs, l)
+
+	// Example with named return
+	// Example-1
+	status, name := isValid()
+	fmt.Printf("Named Return=%v, Name=%v\n", status, name)
+
+	// Example-2
+	lat, lng := coordinates()
+	fmt.Printf("Latitude: %v, Longitude: %v", lat, lng)
+
 }
 
 // create a variadic function
@@ -44,7 +61,7 @@ func sayHelloVariadic(greetings ...string) string { // greeting... -> is a Slice
 	for _, greet := range greetings {
 		result += fmt.Sprintf("%s ", greet)
 	}
-	return result
+	return strings.TrimSpace(result)
 }
 
 //func sayHelloVariadic(greetings ...string) string {
@@ -73,4 +90,28 @@ func returnThree(greeting, name string) (string, string, error) {
 	}
 
 	return strings.ToUpper(greeting), strings.ToUpper(name), nil
+}
+
+func info(s []string) (string, int, int) {
+	gs := fmt.Sprintf("%#v", s)
+	l := len(s)
+	c := cap(s)
+	return gs, l, c
+}
+
+// create a function with named return, which automatically return the argument
+func isValid() (valid bool, name string) { // this will return the "valid" variable; since the return is tagged with variable "valid", this is called named return
+	// valid is initialized with <false>
+	name = "Olly"
+	fmt.Printf("Before=%v\n", valid)
+	valid = true
+	fmt.Printf("After=%v\n", valid)
+
+	return // returning variable "valid" with its latest <value>
+}
+
+func coordinates() (lat float64, lng float64) {
+	lat = 42.1344354
+	lng = -71.2344535
+	return
 }
