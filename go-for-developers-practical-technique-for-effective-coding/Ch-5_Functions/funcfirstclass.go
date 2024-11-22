@@ -9,8 +9,9 @@ func main() {
 		2. Create a function and assign it to a variable for later execution
 	*/
 	fmt.Println("Function First Class Citizen ...")
-	fnWithIntReturn := func() (meaning int) {
+	fnWithIntReturn := func() (meaning int) { // named return
 		fmt.Println("Hello var-assigned function")
+		meaning = 100
 		return // returning integer value of <meaning>
 	}
 	//fmt.Printf("Meaning: %v", fn())

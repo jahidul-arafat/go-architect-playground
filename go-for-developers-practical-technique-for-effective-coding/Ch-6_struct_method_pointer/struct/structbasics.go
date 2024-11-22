@@ -8,6 +8,34 @@ type MyInt int
 type MyString string
 type MyMap map[string]string // map[key][]value
 
+// create a custom type for a func() which returns a string
+type Greeter func() string
+type Adder func(int, int, int) (int, int)
+type Subtractor func(int, int, int) (int, int)
+
+// 1. Methods for simple custom types
+// method for MyInt
+func (i MyInt) IntGreeter() {
+	fmt.Printf("Hello, I am %d\n", i)
+}
+
+// crete a sayHello function that takes the Greeter as an argument
+func sayHelloToCustomTyPeGreeter(greetFunc Greeter) {
+	fmt.Println(greetFunc()) // printing the returned string of the greetFunc
+}
+
+// create a function that takes the Adder as an argument
+func addNumbers(addFunc Adder, num1, num2, counter int) {
+	result, counter := addFunc(num1, num2, counter)
+	fmt.Printf("[Add] Result: %d, Counter: %d\n", result, counter)
+}
+
+// create a function that takes the Subtractor as an argument
+func subtractNumbers(subtractFunc Subtractor, num1, num2, counter int) {
+	result, counter := subtractFunc(num1, num2, counter)
+	fmt.Printf("[Sub] Result: %d, Counter: %d\n", result, counter)
+}
+
 // Create some complex types using struct
 // where struct = zero/more fields + methods
 
@@ -61,6 +89,60 @@ func main() {
 	//student.Name = "John Doe"
 	//student.Age = 25
 	//student.Grades = []string{"A", "F", "C"}
+
+	myInt := MyInt(20)
+	myInt.IntGreeter()
+
+	// custom type func Greeter() testing
+
+	sayHelloToCustomTyPeGreeter(func() string {
+		return "Greeter Type Function: 10"
+	})
+
+	// create a variable of type Greeter
+	//newGreeter := Greeter(func() string {
+	//	return "Greeter Function: 20"
+	//})
+	//sayHelloToCustomTyPeGreeter(newGreeter)
+
+	var newGreeter Greeter = func() string {
+		return "This is a new Greeter"
+	}
+
+	sayHelloToCustomTyPeGreeter(newGreeter)
+
+	// create a new adder function
+	//var addFunc Adder = func(a, b, counter int) (int, int) {
+	//	return a + b, counter + 1
+	//}
+	//addNumbers(addFunc, 10, 20, 0)
+
+	// create a new adder function using anonymous function
+	//addFunc := func(a, b, counter int) (int, int) {
+	//    return a + b, counter + 1
+	//}
+	//addNumbers(addFunc, 10, 20, 0)
+
+	// create a new adder function
+	addFunc01 := Adder(func(a, b, counter int) (int, int) {
+		return a + b, counter + 1
+	})
+
+	subtarctFunc01 := Subtractor(func(a, b, counter int) (int, int) {
+		return a - b, counter - 1
+	})
+
+	addNumbers(addFunc01, 10, 20, 0)
+	subtractNumbers(subtarctFunc01, 10, 20, 0)
+
+	// create a new student object
+	//var student Student
+	//student.Name = "John Doe"
+	//student.Age = 25
+	//student.Grades = []string{"A", "F", "C"}
+
+	// Now let's create a new student object using the User Defined type
+
 	student := Student{
 		Name:       "John Doe",
 		Age:        25,
