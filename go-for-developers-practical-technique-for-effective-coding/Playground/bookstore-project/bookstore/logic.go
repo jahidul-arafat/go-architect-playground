@@ -2,10 +2,10 @@ package bookstore
 
 import "fmt" // go fmt implictely derefences pointers when printing structs
 
-// Method-01: AddBook
+// Method-01: AddBook // for Librarian
 // For: type <Librarian>
 // Librarian to add a new book to the BookStore
-// the BookStore must be in the global score; thus must be used as "call by reference (pointer)"
+// the BookStore must be in the global scope; thus must be used as "call by reference (pointer)"
 // l *Librarian -> pointer receiver, so if l.Name="Changed Name", then this changes will be globally available
 
 func (l *Librarian) AddBook(store *BookStore, bookID, title, author string, maxLifeCycle int) {
@@ -86,7 +86,7 @@ func (s *Student) ReturnBook(store *BookStore, bookID string) {
 // Librarian will donate the books reached their lifecycle
 // pointer receiver
 func (store *BookStore) DonateOldBooks() []*Book {
-	var tmpBookStore []Book      // this will store all the books not reaching their lifecycle
+	var tmpBookStore []Book      // a local copy will be created      // this will store all the books not reaching their lifecycle
 	var bookDonationList []*Book // this will store all teh books reaches their lifecycle and thereby donated by the librarian
 	for i := range store.BookList {
 		// currentBook -> is actually a currentBook pointer
@@ -105,7 +105,7 @@ func (store *BookStore) DonateOldBooks() []*Book {
 	return bookDonationList
 }
 
-// ListBooks Function-01
+// ListBooks Method for BookStore
 // ListBooks - print all the books in the bookstore
 // pointer receiver --- store *BookStore ---
 func (store *BookStore) ListBooks() {

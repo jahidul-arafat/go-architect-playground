@@ -83,8 +83,9 @@ func main() {
 	fmt.Println("\n\nAfter Returning Books .....")
 	store.ListBooks()
 
-	// Let students borrow the book BK3 which has a maxLifeCyle=1 and after that the books will be listed for Donating
+	// Let students borrow the book BK3 which has a maxLifeCycle=1 and after that the books will be listed for Donating
 	fmt.Println("\n\n Book Status to check MaxLifeCycle...")
+	//(*studentList[2]).BorrowBook(store, "BK3")
 	studentList[2].BorrowBook(store, "BK3")
 	store.ListBooks()
 
