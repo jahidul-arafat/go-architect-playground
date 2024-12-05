@@ -1,0 +1,6 @@
+mode: set
+demotestproject/cmd/main.go:8.13,11.2 2 0
+demotestproject/util/getuser.go:10.37,12.2 1 0
+demotestproject/util/oddchecker.go:3.26,5.2 1 0
+demotestproject/util/getuser.go:10.37,12.2 1 1
+demotestproject/util/oddchecker.go:3.26,5.2 1 1

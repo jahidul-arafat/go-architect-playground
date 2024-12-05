@@ -11,11 +11,11 @@ type Book struct {
 
 // BookStore - BookStore type which will have slice of books
 type BookStore struct {
-	ID            string      // a bookstore should have an unique identifier
-	Name          string      // name of the bookstore
-	Location      string      // location of the bookstore
-	BookList      []Book      // slice of Books (aka list of all books in the bookstore)
-	LibrarianList []Librarian // slice of Librarian (aka list of all librarians currently working in the bookstore)
+	ID            string       // a bookstore should have an unique identifier
+	Name          string       // name of the bookstore
+	Location      string       // location of the bookstore
+	BookList      []*Book      // slice of Book Pointers pointing to the actual Book objects(aka list of all books in the bookstore) // memory efficient since no local copy is creating
+	LibrarianList []*Librarian // slice of Librarian Pointers pointing to the actual Librarian objects (aka list of all librarians currently working in the bookstore)
 }
 
 // Librarian - Librarian type
