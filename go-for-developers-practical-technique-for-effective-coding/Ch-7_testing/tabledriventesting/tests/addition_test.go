@@ -19,7 +19,7 @@ func testAddHelper(t testing.TB, inp1, inp2, expected int) {
 	}
 
 	// test helper should cleanup some resources when done
-	
+
 }
 
 func Test_Add(t *testing.T) {
